@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Item from "./Item";
 import items from "data/items.json";
 import styles from "./Items.module.scss";
+import { Carte } from "types/Dish";
 
 interface Props {
   query: string;
@@ -25,7 +26,7 @@ export default ({ query, filter, sorter }: Props) => {
     return true;
   };
 
-  const fnSorter = (list: typeof items) => {
+  const fnSorter = (list: Carte) => {
     switch (sorter) {
       case "porcao":
         return ascSorter(list, "size");

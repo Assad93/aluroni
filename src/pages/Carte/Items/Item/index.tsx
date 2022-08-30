@@ -1,8 +1,7 @@
 import styles from "./Item.module.scss";
 import items from "data/items.json";
 import classNames from "classnames";
-
-type Props = typeof items[0];
+import { Dish } from "types/Dish";
 
 export default ({
   title,
@@ -12,7 +11,7 @@ export default ({
   photo,
   price,
   serving,
-}: Props) => {
+}: Dish) => {
   return (
     <div className={styles.item}>
       <div className={styles.item__image}>

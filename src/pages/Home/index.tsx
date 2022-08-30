@@ -3,13 +3,14 @@ import styles from "./Home.module.scss";
 import theme from "styles/Theme.module.scss";
 import aluroni from "assets/img/nossa_casa.png";
 import { useNavigate } from "react-router-dom";
+import { Dish } from "types/Dish";
 
 export default () => {
   let recomendedItems = [...items].sort(() => 0.5 - Math.random()).splice(0, 3);
   const navigate = useNavigate();
 
-  const toDetails = (dish: typeof items[0]) => {
-    navigate(`/prato/${dish.id}`, { state: { ...dish }, replace: true });
+  const toDetails = (dish: Dish) => {
+    navigate(`/prato/${dish.id}`, { state: { dish }, replace: true });
   };
 
   return (
