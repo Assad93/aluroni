@@ -2,18 +2,15 @@ import styles from "./Item.module.scss";
 import items from "data/items.json";
 import classNames from "classnames";
 import { Dish } from "types/Dish";
+import Tags from "components/Tags";
+import { useNavigate } from "react-router-dom";
 
-export default ({
-  title,
-  size,
-  category,
-  description,
-  photo,
-  price,
-  serving,
-}: Dish) => {
+export default (props: Dish) => {
+  const navigate = useNavigate();
+  const { id, title, description, photo } = props;
+
   return (
-    <div className={styles.item}>
+    <div className={styles.item} onClick={() => navigate(`/prato/${id}`)}>
       <div className={styles.item__image}>
         <img src={photo} alt={title} />
       </div>
@@ -22,21 +19,7 @@ export default ({
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        <div className={styles.item__tags}>
-          <div
-            className={classNames({
-              [styles.item__type]: true,
-              [styles[`item__type__${category.label.toLowerCase()}`]]: true,
-            })}
-          >
-            {category.label}
-          </div>
-          <div className={styles.item__portion}>{size}</div>
-          <div className={styles.item__serving}>
-            {serving} pessoa{serving === 1 ? "" : "s"}
-          </div>
-          <div className={styles.item__price}>R$ {price.toFixed(2)}</div>
-        </div>
+        <Tags {...props} />
       </div>
     </div>
   );

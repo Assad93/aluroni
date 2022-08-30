@@ -19,8 +19,8 @@ export default () => {
             <Route path="cardapio" element={<Carte />} />
             <Route path="sobre" element={<About />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
           <Route path="prato/:id" element={<Dish />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>
